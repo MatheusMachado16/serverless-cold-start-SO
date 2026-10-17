@@ -1,0 +1,60 @@
+{
+  "experimento": "E2",
+  "descricao": "Tamanho e composição do pacote (A2, 256 MiB, bridge, cache aquecido)",
+  "configs": [
+    {
+      "id": "E2-py-minimo",
+      "workload": "A2",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "minimo",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E2-py-padrao",
+      "workload": "A2",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E2-py-ampliado",
+      "workload": "A2",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "ampliado",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E2-js-minimo",
+      "workload": "A2",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "minimo",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E2-js-padrao",
+      "workload": "A2",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E2-js-ampliado",
+      "workload": "A2",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "ampliado",
+      "rede": "bridge",
+      "cache": "aquecido"
+    }
+  ]
+}

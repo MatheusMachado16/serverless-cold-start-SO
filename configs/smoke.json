@@ -1,0 +1,24 @@
+{
+  "experimento": "SMOKE",
+  "descricao": "Teste A/A do pipeline: duas configurações IDÊNTICAS (controle 010.sleep). Não é um experimento do estudo.",
+  "configs": [
+    {
+      "id": "SMOKE-aa-1",
+      "workload": "CTRL",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "SMOKE-aa-2",
+      "workload": "CTRL",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    }
+  ]
+}

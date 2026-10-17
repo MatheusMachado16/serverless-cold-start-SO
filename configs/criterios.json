@@ -1,0 +1,8 @@
+{
+  "_status": "PROVISÓRIO: valores iniciais para o piloto; revisar com a variabilidade observada (protocolo.md, item 8)",
+  "exigir_tomada": true,
+  "temp_max_c": 80,
+  "swap_max_kb": 0,
+  "mem_min_disponivel_kb": 1500000,
+  "espera_max_s": 300
+}

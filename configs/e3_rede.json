@@ -1,0 +1,42 @@
+{
+  "experimento": "E3",
+  "descricao": "Modo de rede Docker (A1, 256 MiB, pacote padrão, cache aquecido)",
+  "configs": [
+    {
+      "id": "E3-py-bridge",
+      "workload": "A1",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E3-py-host",
+      "workload": "A1",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "host",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E3-js-bridge",
+      "workload": "A1",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E3-js-host",
+      "workload": "A1",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "host",
+      "cache": "aquecido"
+    }
+  ]
+}

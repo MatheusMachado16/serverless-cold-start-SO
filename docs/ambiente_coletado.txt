@@ -1,0 +1,31 @@
+# coletado em 2026-10-17T16:38:22-03:00
+## SO
+Ubuntu 24.04.4 LTS
+6.18.33.2-microsoft-standard-WSL2
+## CPU
+CPU(s):                                  12
+Model name:                              13th Gen Intel(R) Core(TM) i5-1334U
+Thread(s) per core:                      2
+Core(s) per socket:                      6
+## Memória
+               total        used        free      shared  buff/cache   available
+Mem:           3.6Gi       529Mi       1.7Gi       3.5Mi       1.5Gi       3.1Gi
+Swap:          1.0Gi          0B       1.0Gi
+swap:
+NAME     TYPE      SIZE USED PRIO
+/dev/sdc partition   1G   0B   -2
+## Governador/driver
+cat: /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor: No such file or directory
+cat: /sys/devices/system/cpu/cpu0/cpufreq/scaling_driver: No such file or directory
+## Docker
+server=29.9.1
+storage_driver=overlayfs cgroup=2/systemd runtime=runc
+ext4   /dev/sdd[/var/lib/docker]
+## Ferramentas
+Python 3.12.3
+./scripts/00_verificar_host.sh: line 17: strace: command not found
+./scripts/00_verificar_host.sh: line 17: perf: command not found
+v18.19.1
+## Imagens
+## perf_event_paranoid
+2

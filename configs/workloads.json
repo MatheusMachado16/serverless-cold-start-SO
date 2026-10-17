@@ -1,0 +1,19 @@
+{
+  "CTRL": {
+    "benchmark": "000.microbenchmarks/010.sleep",
+    "evento": {
+      "sleep": 0.05
+    },
+    "nota": "sleep=0.05 s: o validador do SeBS compara com tolerância relativa de 5%; 0 s não validaria"
+  },
+  "A1": {
+    "benchmark": "100.webapps/130.crud-api",
+    "evento_arquivo": "configs/eventos/a1_small.json",
+    "nota": "gerado por scripts/semear_servicos.py (entrada small do SeBS)"
+  },
+  "A2": {
+    "benchmark": "200.multimedia/210.thumbnailer",
+    "evento_arquivo": "configs/eventos/a2.json",
+    "nota": "gerado por scripts/semear_servicos.py"
+  }
+}

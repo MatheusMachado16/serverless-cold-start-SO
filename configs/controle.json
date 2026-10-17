@@ -1,0 +1,24 @@
+{
+  "experimento": "CTRL",
+  "descricao": "Controle complementar 010.sleep (fora das 26 configurações principais)",
+  "configs": [
+    {
+      "id": "CTRL-py-256",
+      "workload": "CTRL",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "CTRL-js-256",
+      "workload": "CTRL",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    }
+  ]
+}

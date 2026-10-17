@@ -1,0 +1,25 @@
+{
+  "sebs_dir": "~/serverless-benchmarks",
+  "dir_pacotes": "pacotes",
+  "cpus": 1,
+  "imagens": {
+    "python": "spcleth/serverless-benchmarks:run.local.python.3.11",
+    "nodejs": "spcleth/serverless-benchmarks:run.local.nodejs.20"
+  },
+  "timeout_pronto_s": 60,
+  "timeout_req_s": 60,
+  "intervalo_sondagem_ms": 5,
+  "env_por_workload": {
+    "A1": {
+      "NOSQL_STORAGE_TYPE": "scylladb",
+      "NOSQL_STORAGE_ENDPOINT": "PREENCHER (saída de scripts/servicos.sh)",
+      "NOSQL_STORAGE_TABLE_shopping_cart": "cold-start-shopping-cart"
+    },
+    "A2": {
+      "MINIO_ADDRESS": "PREENCHER (saída de scripts/servicos.sh)",
+      "MINIO_ACCESS_KEY": "coldstart",
+      "MINIO_SECRET_KEY": "coldstart-secret"
+    }
+  },
+  "_notas": "cpus e swap (memory-swap == memory) ficam constantes em todas as configurações."
+}

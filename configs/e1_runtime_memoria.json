@@ -1,0 +1,78 @@
+{
+  "experimento": "E1",
+  "descricao": "Runtime x limite de memória (A1, pacote padrão, bridge, cache aquecido)",
+  "configs": [
+    {
+      "id": "E1-py-128",
+      "workload": "A1",
+      "runtime": "python",
+      "mem_mib": 128,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E1-py-256",
+      "workload": "A1",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E1-py-512",
+      "workload": "A1",
+      "runtime": "python",
+      "mem_mib": 512,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E1-py-1024",
+      "workload": "A1",
+      "runtime": "python",
+      "mem_mib": 1024,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E1-js-128",
+      "workload": "A1",
+      "runtime": "nodejs",
+      "mem_mib": 128,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E1-js-256",
+      "workload": "A1",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E1-js-512",
+      "workload": "A1",
+      "runtime": "nodejs",
+      "mem_mib": 512,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E1-js-1024",
+      "workload": "A1",
+      "runtime": "nodejs",
+      "mem_mib": 1024,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    }
+  ]
+}

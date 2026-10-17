@@ -1,0 +1,78 @@
+  {
+  "experimento": "E4",
+  "descricao": "Estado dos caches do host (256 MiB, pacote padrão, bridge)",
+  "configs": [
+    {
+      "id": "E4-a1-py-aque",
+      "workload": "A1",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E4-a1-py-desc",
+      "workload": "A1",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "descartado"
+    },
+    {
+      "id": "E4-a1-js-aque",
+      "workload": "A1",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E4-a1-js-desc",
+      "workload": "A1",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "descartado"
+    },
+    {
+      "id": "E4-a2-py-aque",
+      "workload": "A2",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E4-a2-py-desc",
+      "workload": "A2",
+      "runtime": "python",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "descartado"
+    },
+    {
+      "id": "E4-a2-js-aque",
+      "workload": "A2",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "aquecido"
+    },
+    {
+      "id": "E4-a2-js-desc",
+      "workload": "A2",
+      "runtime": "nodejs",
+      "mem_mib": 256,
+      "pacote": "padrao",
+      "rede": "bridge",
+      "cache": "descartado"
+    }
+  ]
+}
