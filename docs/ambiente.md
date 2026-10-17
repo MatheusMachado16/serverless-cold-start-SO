@@ -15,6 +15,14 @@ Preencher antes da coleta definitiva.
 | Commit do SeBS | b37f475542436ffb6b0ad03bd5972a680ecb8186 |
 | Governador da CPU (valor real durante a coleta) | (padrão do sistema: powersave; preencher após ajustar) |
 | Driver de frequência | (resultado do scaling_driver) |
+| Driver de armazenamento do Docker | (preencher: `docker info \| grep -i "storage driver"`) |
+| Sistema de arquivos do Docker | (preencher: `findmnt -no FSTYPE,SOURCE /var/lib/docker`) |
+| Versão de cgroups | (preencher: `stat -fc %T /sys/fs/cgroup`; `cgroup2fs` = v2) |
+| Política de swap do host | (preencher: `swapon --show`) |
+| Limite de CPU e swap dos contêineres | (definir no piloto e manter constante) |
+| Imagens e identificadores | (preencher após o build: `docker images --digests`) |
+| Versões de Python e Node.js nas imagens | (preencher após o build) |
+| `strace` e `perf` | (preencher: `strace -V`, `perf --version`) |
 
 ## Condições de cada rodada
 

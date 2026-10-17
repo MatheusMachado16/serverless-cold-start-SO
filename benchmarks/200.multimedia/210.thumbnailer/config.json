@@ -1,0 +1,7 @@
+{
+  "timeout": 60,
+  "memory": 256,
+  "languages": ["python", "nodejs", "cpp"],
+  "modules": ["storage"],
+  "cpp_dependencies": ["sdk", "opencv", "libjpeg-turbo", "boost"]
+}
