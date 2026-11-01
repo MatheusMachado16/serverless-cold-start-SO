@@ -14,7 +14,9 @@ echo "## Governador/driver"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_go
 echo "## Docker";    docker version --format 'server={{.Server.Version}}' 2>&1
 docker info --format 'storage_driver={{.Driver}} cgroup={{.CgroupVersion}}/{{.CgroupDriver}} runtime={{.DefaultRuntime}}' 2>&1
 findmnt -no FSTYPE,SOURCE /var/lib/docker 2>&1
-echo "## Ferramentas"; python3 --version; strace -V 2>&1 | head -1; perf --version 2>&1; node --version 2>&1
+echo "## Ferramentas"; python3 --version; node --version 2>&1
+(command -v strace >/dev/null && strace -V | head -1) || echo "strace: não instalado"
+(command -v perf >/dev/null && perf --version) || echo "perf: não instalado"
 echo "## Imagens";   docker images --digests 2>&1 | grep -E 'serverless|scylla|minio' 
 echo "## perf_event_paranoid"; cat /proc/sys/kernel/perf_event_paranoid
 } > "$OUT" 2>&1
@@ -23,8 +25,8 @@ echo "Verificações:"
 command -v docker >/dev/null && docker ps >/dev/null 2>&1 && ok "docker acessível" || aviso "docker indisponível para este usuário"
 [ "$(stat -fc %T /sys/fs/cgroup)" = "cgroup2fs" ] && ok "cgroups v2" || aviso "cgroups v1: ler_cgroup() não encontrará os arquivos"
 sudo -n true 2>/dev/null && ok "sudo sem senha (necessário p/ drop_caches em E4)" || aviso "sudo -n falha: E4 'descartado' exigirá rodar o orquestrador como root"
-command -v strace >/dev/null && ok "strace" || aviso "strace ausente (sudo apt install strace)"
-command -v perf   >/dev/null && ok "perf"   || aviso "perf ausente (sudo apt install linux-tools-generic)"
+command -v strace >/dev/null && ok "strace" || aviso "strace ausente (Bluefin: brew install strace ou rpm-ostree install strace)"
+command -v perf   >/dev/null && ok "perf"   || aviso "perf ausente (Bluefin: rpm-ostree install perf, depois reiniciar)"
 [ "$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor 2>/dev/null)" = "performance" ] && ok "governador performance" || aviso "governador != performance (sudo cpupower frequency-set -g performance)"
 [ -n "$(swapon --show --noheadings)" ] && aviso "há swap ativo no host; defina a política e registre em docs/ambiente.md" || ok "sem swap no host"
 for p in /sys/class/hwmon/hwmon*/name; do grep -qE 'k10temp|coretemp' "$p" 2>/dev/null && ok "sensor de temperatura" && break; done

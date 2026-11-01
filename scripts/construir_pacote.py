@@ -72,6 +72,18 @@ def construir_python(a, bench: Path, sebs: Path, saida: Path):
     return deps
 
 
+def npm_install_em_conteiner(saida: Path):
+    """npm install dentro da imagem de execução (glibc do runtime). Módulos nativos como o `sharp`
+    compilados no host (glibc nova do Bluefin) não carregam no contêiner (Ubuntu 22.04)."""
+    import os
+    img = os.environ.get("CS_IMAGEM_NODE", "spcleth/serverless-benchmarks:run.local.nodejs.20")
+    cmd = ("apt-get update -qq && apt-get install -y -qq --no-install-recommends build-essential >/dev/null "
+           "&& rm -rf node_modules && npm install --omit=dev --no-audit --no-fund --silent; rc=$?; "
+           f"chown -R {os.getuid()}:{os.getgid()} /function; exit $rc")
+    sh(["docker", "run", "--rm", "--user", "root", "-e", "HOME=/tmp", "-v", f"{saida.resolve()}:/function",
+        "-w", "/function", "--entrypoint", "bash", img, "-c", cmd])
+
+
 def construir_node(a, bench: Path, sebs: Path, saida: Path):
     fn = saida / "function"
     copiar_aplicacao(bench / "nodejs", fn)
@@ -87,7 +99,7 @@ def construir_node(a, bench: Path, sebs: Path, saida: Path):
         pj["dependencies"].update(DEPS_MODULO_JS[w])
     (saida / "package.json").write_text(json.dumps(pj, indent=2))
     if pj["dependencies"]:
-        sh(["npm", "install", "--omit=dev", "--no-audit", "--no-fund", "--silent"], cwd=saida)
+        npm_install_em_conteiner(saida)
     return pj["dependencies"]
 
 

@@ -18,7 +18,7 @@ BUCKET = "cold-start"
 
 
 def ip(nome):
-    return subprocess.run(["docker", "inspect", "-f", "{{.NetworkSettings.IPAddress}}", nome],
+    return subprocess.run(["docker", "inspect", "-f", "{{.NetworkSettings.Networks.bridge.IPAddress}}", nome],
                           capture_output=True, text=True, check=True).stdout.strip()
 
 
