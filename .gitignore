@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Pacotes das aplicações, gerados por scripts/construir_pacote.py (reproduzíveis)
+pacotes/
+
+# Rastros pesados por amostra (docker events, strace, perf)
+resultados/rastros/*
+!resultados/rastros/.gitkeep
+
+# Editor e sistema
+.vscode/
+.idea/
+.DS_Store
