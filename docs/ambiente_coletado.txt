@@ -1,31 +1,36 @@
-# coletado em 2026-10-17T16:38:22-03:00
+# coletado em 2026-11-01T11:05:00-03:00
 ## SO
-Ubuntu 24.04.4 LTS
-6.18.33.2-microsoft-standard-WSL2
+"Bluefin (Version: 44.20261029.1)"
+7.2.7-200.fc44.x86_64
 ## CPU
 CPU(s):                                  12
-Model name:                              13th Gen Intel(R) Core(TM) i5-1334U
+Model name:                              AMD Ryzen 5 5500U with Radeon Graphics
 Thread(s) per core:                      2
 Core(s) per socket:                      6
+CPU(s) scaling MHz:                      63%
 ## Memória
                total        used        free      shared  buff/cache   available
-Mem:           3.6Gi       529Mi       1.7Gi       3.5Mi       1.5Gi       3.1Gi
-Swap:          1.0Gi          0B       1.0Gi
+Mem:           6.6Gi       1.7Gi       1.1Gi       4.2Mi       4.1Gi       4.8Gi
+Swap:          6.6Gi          0B       6.6Gi
 swap:
-NAME     TYPE      SIZE USED PRIO
-/dev/sdc partition   1G   0B   -2
+NAME       TYPE      SIZE USED PRIO
+/dev/zram0 partition 6.6G   0B  100
 ## Governador/driver
-cat: /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor: No such file or directory
-cat: /sys/devices/system/cpu/cpu0/cpufreq/scaling_driver: No such file or directory
+performance
+amd-pstate-epp
 ## Docker
-server=29.9.1
+server=29.9.2
 storage_driver=overlayfs cgroup=2/systemd runtime=runc
-ext4   /dev/sdd[/var/lib/docker]
 ## Ferramentas
-Python 3.12.3
-./scripts/00_verificar_host.sh: line 17: strace: command not found
-./scripts/00_verificar_host.sh: line 17: perf: command not found
-v18.19.1
+Python 3.14.8
+v20.20.2
+strace: não instalado
+perf: não instalado
 ## Imagens
+spcleth/serverless-benchmarks   run.local.nodejs.20     sha256:a12b108a27b6c89e76dc07b77837424fbe311b63501b2796b4203f867353328b   a12b108a27b6   2 weeks ago     667MB
+spcleth/serverless-benchmarks   run.local.python.3.11   sha256:3224d477dc17b7e8e4ede1f984c2f23ae87b8041bd64bf348042ec9d319efaa1   3224d477dc17   2 weeks ago     300MB
+cgr.dev/chainguard/minio        latest                  <none>                                                                    709099319add   2 weeks ago     235MB
+cs-minio                        fixed                   sha256:709099319add48dfb44aa596a7070d3ddd8dd04d7ae881765719aec29df9e510   709099319add   2 weeks ago     235MB
+scylladb/scylla                 6.2                     sha256:a9d904089abe9a4f8b5b893ebb5b5bf8b5a1bd0dc6658921cf05f89d3712289c   a9d904089abe   21 months ago   945MB
 ## perf_event_paranoid
 2
