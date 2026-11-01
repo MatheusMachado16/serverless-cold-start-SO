@@ -134,7 +134,15 @@ def medir(backend, cfg, evento, validador, env_extra, amb, opts, n_quente, id_ba
     Retorna lista de dicts (linha fria, depois linhas quentes). Nunca levanta por falha
     da amostra: a falha vira linha com `validacao` != 'ok'."""
     linhas = []
-    prep = preparar_cache(backend, cfg, env_extra, evento, validador, amb, opts)
+    try:
+        prep = preparar_cache(backend, cfg, env_extra, evento, validador, amb, opts)
+    except Exception as e:  # noqa: BLE001
+        if type(e).__name__ not in ("FalhaInicializacao", "RemoteDisconnected", "ConnectionResetError",
+                                    "ConnectionRefusedError", "TimeoutError", "timeout"):
+            raise   # ex.: falha de drop_caches: não pode contaminar a amostra em silêncio
+        # o contêiner de aquecimento não subiu; a amostra fria abaixo falha pelo mesmo
+        # motivo e vira uma linha `falha_inicio` no CSV, sem abortar o piloto
+        prep = {"cache_prep_s": None, "cache_nivel": None}
     porta = porta_livre()
     host_antes = coletores.condicoes_host()
     h, ev = None, None
@@ -182,7 +190,7 @@ def medir(backend, cfg, evento, validador, env_extra, amb, opts, n_quente, id_ba
             fria["validacao"], fria["motivo"] = "oom", "oom_killed"
         linhas.append(fria)
 
-        # ---- invocações quentes: mesmo contêiner e processo, sem descartar caches
+        # invocações quentes: mesmo contêiner e processo, sem descartar caches
         if fria["validacao"] == "ok":
             for i in range(n_quente):
                 te, tr, st, cj = invocar(porta, evento, opts["timeout_req_s"])

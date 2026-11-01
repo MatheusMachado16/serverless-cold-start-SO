@@ -43,7 +43,7 @@ COLUNAS = [
     "cache_prep_s", "cache_nivel",
     # observação (cgroup/proc)
     "cpu_usec", "mem_atual_bytes", "mem_pico_bytes", "pgfault", "pgmajfault", "pgfault_minor",
-    "io_rbytes", "io_wbytes", "io_rios", "io_wios", "oom_kill",
+    "io_rbytes", "io_wbytes", "io_rios", "io_wios", "oom_kill", "oom_flag",
     "mem_efetiva_bytes", "swap_efetivo_bytes", "nano_cpus", "rede_efetiva",
     # ambiente
     "host_temp_c", "host_freq_khz", "host_mem_disponivel_kb", "host_swap_usado_kb", "host_na_tomada", "host_governador",
@@ -100,7 +100,8 @@ def snapshot_ambiente(amb):
         "docker_storage_driver": sh("docker info --format '{{.Driver}}'"),
         "docker_cgroup_version": sh("docker info --format '{{.CgroupVersion}}'"),
         "docker_cgroup_driver": sh("docker info --format '{{.CgroupDriver}}'"),
-        "fs_docker": sh("findmnt -no FSTYPE,SOURCE /var/lib/docker"),
+        "docker_root": sh("docker info --format '{{.DockerRootDir}}'"),
+        "fs_docker": sh("findmnt -no FSTYPE,SOURCE -T \"$(docker info --format '{{.DockerRootDir}}')\""),
         "swap": sh("swapon --show --noheadings"),
         "strace": sh("strace -V | head -1"),
         "perf": sh("perf --version"),

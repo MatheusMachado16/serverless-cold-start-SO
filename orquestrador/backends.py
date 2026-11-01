@@ -86,7 +86,17 @@ class BackendDocker:
         rodando, oom, cod = r.stdout.strip().split("|")
         if rodando == "true":
             return True, ""
+        self._salvar_log_falha(h)
         return False, "oom" if oom == "true" else f"saiu_cod_{cod}"
+
+    def _salvar_log_falha(self, h: Handle):
+        """Guarda as últimas linhas do contêiner que caiu, antes de o remover() apagá-lo."""
+        r = _run(["docker", "logs", "--tail", "40", h.nome])
+        txt = (r.stdout + r.stderr).strip()
+        h.extra["log_falha"] = txt
+        d = self.raiz / "resultados" / "falhas"
+        d.mkdir(parents=True, exist_ok=True)
+        (d / f"{h.nome}.log").write_text(txt + "\n", encoding="utf-8")
 
     def pos_resposta(self, h: Handle) -> dict:
         """Lido depois de t_resp (fora da janela cronometrada)."""
@@ -108,10 +118,10 @@ class BackendDocker:
         return m
 
     def remover(self, h: Handle):
+        self.vivo(h)   # se o contêiner já caiu, guarda o log antes de apagá-lo
         _run(["docker", "rm", "-f", h.nome])
 
 
-# ==========================================================================
 class BackendProcesso:
     """Mesmo server.py do SeBS (com CODE_LOCATION trocado), sem contêiner."""
     nome = "processo"
