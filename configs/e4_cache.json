@@ -1,4 +1,4 @@
-  {
+{
   "experimento": "E4",
   "descricao": "Estado dos caches do host (256 MiB, pacote padrão, bridge)",
   "configs": [

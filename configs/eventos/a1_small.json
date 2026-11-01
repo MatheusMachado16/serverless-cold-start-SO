@@ -1,0 +1,11 @@
+{
+  "requests": [
+    {
+      "route": "GET /cart",
+      "body": {
+        "cart": "59083d70822843d5afbfe190b3977d5c"
+      }
+    }
+  ],
+  "size": "small"
+}
